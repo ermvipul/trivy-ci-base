@@ -14,7 +14,7 @@ jobs:
       
       - name: Build an image from Dockerfile
         run: |
-          docker build -t fastapi-v1:${{ github.sha }} .
+          docker build -t demo.goharbor.io/trivy/test:${{ github.sha }} .
       
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.28.0
@@ -34,3 +34,18 @@ jobs:
         with:
           name: trivy-report
           path: trivy-report.json
+  push-image:
+    name: Build and Push Image to Harbor
+    runs-on: ubuntu-24.04
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Log in to Harbor
+        run: |
+          echo "${{ secrets.HARBOR_PASS }}" | docker login -u "${{ secrets.HARBOR_USER_NAME }}" --password-stdin demo.goharbor.io
+
+      - name: Push Docker Image to Harbor
+        run: |
+          docker push demo.goharbor.io/trivy/test:${{ github.sha }}
