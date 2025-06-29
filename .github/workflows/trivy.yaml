@@ -25,3 +25,12 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+      - name: Run Trivy vulnerability scanner and save report
+        run: |
+          trivy image --format json --output trivy-report.json fastapi-v1:${{ github.sha }}
+      
+      - name: Upload Trivy report
+        uses: actions/upload-artifact@v3
+        with:
+          name: trivy-report
+          path: trivy-report.json
