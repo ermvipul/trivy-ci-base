@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/<your-github-username>/<your-repo-name>
+    repoURL: https://github.com/ermvipul/trivy-ci-base
     targetRevision: main
     path: kustomize/base
 
