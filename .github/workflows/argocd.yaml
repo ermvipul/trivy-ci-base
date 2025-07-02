@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/ermvipul/trivy-ci-base
     targetRevision: main
-    path: k8s
+    path: kustomize/base
 
   destination:
     server: https://kubernetes.default.svc
