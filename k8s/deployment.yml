@@ -15,4 +15,4 @@ spec:
         - name: fastapi-deployment
           image: demo.goharbor.io/trivy/test
           ports:
-            containerPort: 8000
+            - containerPort: 8000
