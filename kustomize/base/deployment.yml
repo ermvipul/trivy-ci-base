@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fastAPI-deployment
+  name: fastapi-deployment
 spec:
   selector:
     matchLabels:
-      app: fastAPI-deployment
+      app: fastapi-deployment
   template:
     metadata:
       labels:
-        app: fastAPI-deployment
+        app: fastapi-deployment
     spec:
       containers:
-        - name: fastAPI-deployment
+        - name: fastapi-deployment
           image: demo.goharbor.io/trivy/test
           ports:
           - name: http
