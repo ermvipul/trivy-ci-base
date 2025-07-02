@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastAPI-deployment
+spec:
+  selector:
+    matchLabels:
+      app: fastAPI-deployment
+  template:
+    metadata:
+      labels:
+        app: fastAPI-deployment
+    spec:
+      containers:
+        - name: fastAPI-deployment
+          image: demo.goharbor.io/trivy/test
+          ports:
+          - name: http
+            containerPort: 8000
+            protocol: TCP

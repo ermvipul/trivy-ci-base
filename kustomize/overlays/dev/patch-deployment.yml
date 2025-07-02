@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trivy-ci-base
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: trivy-ci-base
+          image: your-dockerhub-user/trivy-ci-base:dev
